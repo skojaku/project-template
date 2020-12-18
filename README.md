@@ -72,3 +72,10 @@ au BufNewFile,BufRead *.rules set syntax=snakemake
 au BufNewFile,BufRead *.snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
 ```
+
+### Git pre-commit
+
+```bash
+conda install -c conda-forge pre-commit
+pre-commit install
+```
