@@ -30,8 +30,8 @@ First create a virtual environment for the project.
 
 Install `ipykernel` for Jupyter and `snakemake` for workflow management. 
 
-    conda install ipykernel
-    conda install -c bioconda -c conda-forge snakemake
+    conda install -y ipykernel
+    conda install -y -c bioconda -c conda-forge snakemake
 
 Create a kernel for the virtual environment that you can use in Jupyter lab/notebook.
 
@@ -76,6 +76,6 @@ au BufNewFile,BufRead *.snake set syntax=snakemake
 ### Git pre-commit
 
 ```bash
-conda install -c conda-forge pre-commit
+conda install -y -c conda-forge pre-commit
 pre-commit install
 ```
