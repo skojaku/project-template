@@ -30,8 +30,7 @@ First create a virtual environment for the project.
 
 Install `ipykernel` for Jupyter and `snakemake` for workflow management. 
 
-    conda install -y ipykernel
-    conda install -y -c bioconda -c conda-forge snakemake
+    conda install -y -c bioconda -c conda-forge snakemake ipykernel numpy pandas scipy matplotlib seaborn tqdm
 
 Create a kernel for the virtual environment that you can use in Jupyter lab/notebook.
 
