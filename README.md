@@ -56,3 +56,8 @@ and create `~/.config/snakemake/default/config.yaml`:
 keep-going: True
 rerun-triggers: mtime
 ```
+
+and add the following to .zshrc or .bashrc file
+```bash 
+export SNAKEMAKE_PROFILE=default
+```
