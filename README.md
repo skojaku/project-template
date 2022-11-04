@@ -36,45 +36,23 @@ Create a kernel for the virtual environment that you can use in Jupyter lab/note
 
     python -m ipykernel install --user --name project_env_kernel_name
 
-### Vim
-
-Copy & paste to .vimrc
-```vim
-set ts=4
-set sts=4
-set sw=4
-set autoindent
-set smartindent
-set smarttab
-set expandtab
-set nohlsearch
-"set number
-"
-call plug#begin('~/.vim/plugged')
-Plug 'nvie/vim-flake8'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'Townk/vim-autoclose'
-Plug 'scrooloose/syntastic'
-Plug 'ivan-krukov/vim-snakemake'
-call plug#end()
-
-" PyFlake Configuration
-let g:PyFlakeOnWrite = 1
-let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
-let g:PyFlakeDefaultComplexity=10
-
-"
-" Syntax for snakemake
-"
-au BufNewFile,BufRead Snakefile set syntax=snakemake
-au BufNewFile,BufRead *.rules set syntax=snakemake
-au BufNewFile,BufRead *.snakefile set syntax=snakemake
-au BufNewFile,BufRead *.snake set syntax=snakemake
-```
 
 ### Git pre-commit
 
 ```bash
 conda install -y -c conda-forge pre-commit
 pre-commit install
+```
+
+
+### Snakemake setting 
+
+```bash 
+mkdir -p ~/.config/snakemake/default 
+```
+and create `~/.config/snakemake/default/config.yaml`:
+```yaml
+# non-slurm profile defaults
+keep-going: True
+rerun-triggers: mtime
 ```
