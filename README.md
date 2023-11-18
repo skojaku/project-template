@@ -21,16 +21,24 @@ This script creates the following folders and files.
 
 ## Set up
 
-### Anaconda
+
+### Miniforge
+
+- [GitHub - conda-forge/miniforge: A conda-forge distribution.](https://github.com/conda-forge/miniforge)
+
+Miniforge is preferred over conda because Miniforge comes with mamba and conda-forge is the default channel.
+
+
+### Setting up the virtual environment 
 
 First create a virtual environment for the project.
 
-    conda create -n project_env_name python=3.7
-    conda activate project_env_name
+    mamba create -n project_env_name python=3.7
+    mamba activate project_env_name
 
 Install `ipykernel` for Jupyter and `snakemake` for workflow management. 
 
-    conda install -y -c bioconda -c conda-forge snakemake ipykernel numpy pandas scipy matplotlib seaborn tqdm austin
+    mamba install -y -c bioconda -c conda-forge snakemake ipykernel numpy pandas scipy matplotlib seaborn tqdm austin
 
 Create a kernel for the virtual environment that you can use in Jupyter lab/notebook.
 
