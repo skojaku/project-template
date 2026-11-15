@@ -1,0 +1,48 @@
+name: Experiment plan
+description: A concrete plan for one experiment (see criteria.md)
+labels: ["draft"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in every field concretely. See `criteria.md`. Unknowns go in as explicit open questions.
+  - type: textarea
+    id: question
+    attributes: {label: Question, description: One sentence a result can answer}
+    validations: {required: true}
+  - type: textarea
+    id: hypothesis
+    attributes: {label: Hypothesis, description: What we expect, and what would contradict it}
+    validations: {required: true}
+  - type: textarea
+    id: data
+    attributes: {label: Data, description: Paths or URLs, size, preprocessing}
+    validations: {required: true}
+  - type: textarea
+    id: method
+    attributes: {label: Method, description: Models, algorithms, parameter values or ranges}
+    validations: {required: true}
+  - type: textarea
+    id: metrics
+    attributes: {label: Metrics, description: Exact definitions}
+    validations: {required: true}
+  - type: textarea
+    id: success
+    attributes: {label: Success criteria, description: Numeric thresholds or comparisons, fixed before seeing results}
+    validations: {required: true}
+  - type: textarea
+    id: randomness
+    attributes: {label: Randomness, description: Seeds and number of repetitions}
+    validations: {required: true}
+  - type: textarea
+    id: compute
+    attributes: {label: Compute, description: Runtime, GPU, memory, parallel jobs}
+    validations: {required: true}
+  - type: textarea
+    id: outputs
+    attributes: {label: Outputs, description: Files and figures that must exist at the end}
+    validations: {required: true}
+  - type: textarea
+    id: failure
+    attributes: {label: If it fails, description: What to report if the run fails or the hypothesis is rejected}
+    validations: {required: true}

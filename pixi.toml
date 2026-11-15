@@ -15,6 +15,7 @@ scipy = "*"
 matplotlib = "*"
 seaborn = "*"
 tqdm = "*"
+ruff = "*"
 
 [pypi-dependencies]
 project_package_name = { path = "libs/project_package_name", editable = true }
@@ -24,3 +25,5 @@ project_package_name = { path = "libs/project_package_name", editable = true }
 snakemake = "snakemake"
 # Format Snakemake files
 fmt = "snakefmt Snakefile workflow"
+# Check Python style in libs/ and exps/
+lint = "ruff check libs exps"
