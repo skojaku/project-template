@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project_package_name"
+version = "0.1"
+description = "project description"
+authors = [{ name = "..." }]
+requires-python = ">=3.12"
+
+[tool.setuptools]
+packages = ["project_package_name"]

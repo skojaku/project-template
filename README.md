@@ -1,16 +1,16 @@
 # Project template
 
-A simple template for research project repos. Also check out [data science and
-reproducible science cookie
-cutters](https://github.com/audreyr/cookiecutter#data-science).
+A simple template for research project repos, managed with [pixi](https://pixi.sh).
 
-## Installation
+## Create a project
 
-Run the following
+Click **Use this template** on GitHub, or run
 
-    ./install.sh YOUR_PROJECT_REPO_FOLDER
+    gh repo create YOUR_PROJECT --template skojaku/project-template --clone
 
-This script creates the following folders and files. 
+Then rename the placeholder package `libs/project_package_name` (folder, `pyproject.toml`, and the entry under `[pypi-dependencies]` in `pixi.toml`) and rename the workspace in `pixi.toml`.
+
+## Folders
 
 1. `libs` for a software library for the project.
 1. `data` for datasets and scripts for downloading datasets.
@@ -21,51 +21,52 @@ This script creates the following folders and files.
 
 ## Set up
 
+Install [pixi](https://pixi.sh), then in the project folder
 
-### Miniforge
+    pixi install
 
-- [GitHub - conda-forge/miniforge: A conda-forge distribution.](https://github.com/conda-forge/miniforge)
+This creates `.pixi/` (the environment, not tracked by git) from `pixi.toml` and pins exact versions in `pixi.lock` (tracked by git). Anyone who clones the repo gets the same environment with `pixi install --locked`.
 
-Miniforge is preferred over conda because Miniforge comes with mamba and conda-forge is the default channel.
+Use the environment:
 
+    pixi run snakemake -c 4      # run the workflow
+    pixi run python script.py    # run anything inside the environment
+    pixi shell                   # or open a shell in the environment
 
-### Setting up the virtual environment 
+Add packages with `pixi add PACKAGE` (conda-forge or bioconda; preferred) or `pixi add --pypi PACKAGE` (only if it is not on conda). Commit `pixi.toml` and `pixi.lock` together.
 
-First create a virtual environment for the project.
+For Jupyter, register the kernel once: `pixi run python -m ipykernel install --user --name project_env_kernel_name`. For notebooks, [marimo](https://marimo.io/) is preferred: `pixi run marimo edit`.
 
-    mamba create -n project_env_name python=3.7
-    mamba activate project_env_name
+### Workflow config
 
-Install `ipykernel` for Jupyter and `snakemake` for workflow management. 
+    cp workflow/config.template.yaml workflow/config.yaml
 
-    mamba install -y -c bioconda -c conda-forge snakemake ipykernel numpy pandas scipy matplotlib seaborn tqdm austin
+and edit the paths. `workflow/config.yaml` is not tracked by git.
 
-Create a kernel for the virtual environment that you can use in Jupyter lab/notebook.
+### Snakemake profile
 
-    python -m ipykernel install --user --name project_env_kernel_name
+    mkdir -p ~/.config/snakemake/default
 
-
-### Git pre-commit
-
-```bash
-conda install -y -c conda-forge pre-commit
-pre-commit install
-```
-
-
-### Snakemake setting 
-
-```bash 
-mkdir -p ~/.config/snakemake/default 
-```
 and create `~/.config/snakemake/default/config.yaml`:
+
 ```yaml
 # non-slurm profile defaults
 keep-going: True
 rerun-triggers: mtime
 ```
 
-and add the following to .zshrc or .bashrc file
-```bash 
+and add the following to `.zshrc` or `.bashrc`:
+
+```bash
 export SNAKEMAKE_PROFILE=default
 ```
+
+## Agent skills
+
+Skill files are not kept in this repo. Install the following skills from my GitHub repositories with [`npx skills`](https://github.com/vercel-labs/skills):
+
+| Skill | Install |
+|---|---|
+| Snakemake style guide | `npx skills add skojaku/snakemake-skill --all` |
+
+This list will grow as I add more skills.
