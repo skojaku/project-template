@@ -1,0 +1,26 @@
+[workspace]
+name = "project"
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64", "osx-arm64"]
+
+[dependencies]
+python = "3.12.*"
+snakemake = ">=8"
+snakefmt = "*"
+ipykernel = "*"
+marimo = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+matplotlib = "*"
+seaborn = "*"
+tqdm = "*"
+
+[pypi-dependencies]
+project_package_name = { path = "libs/project_package_name", editable = true }
+
+[tasks]
+# Run the workflow: `pixi run snakemake -c 4`
+snakemake = "snakemake"
+# Format Snakemake files
+fmt = "snakefmt Snakefile workflow"
