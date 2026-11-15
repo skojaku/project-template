@@ -7,3 +7,5 @@ Jupyter notebook is not recommended. Use [Marimo notebook](https://marimo.io/) i
 much code as possible into the library for reusability.
 
 An experiment worth putting in the paper is moved into the main workflow (`workflow/`) by a person, not by an agent.
+
+Large outputs of an experiment go to `data/exps/<same folder name>/` (no person's name in the path). If the folder name already exists, add `-2`, `-3`, ... See the main README for the full rules.
